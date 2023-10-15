@@ -15,6 +15,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.x
@@ -28,9 +29,19 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      - name: Run tests
-        run: |
-          pytest --alluredir=allure-results
+      #      - name: Run tests
+      #        run: |
+      #          pytest -s -vv --alluredir=allure-results
+
+      - name: Run pytest
+        uses: pavelzw/pytest-action@v2
+        with:
+          verbose: true
+          emoji: true
+          job-summary: true
+          custom-arguments: '-q'
+          click-to-expand: true
+          report-title: 'Test Report'
 
 
       - name: Get Allure history
