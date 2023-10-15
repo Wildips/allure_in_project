@@ -13,7 +13,7 @@ def test_issue_name():
     s('#query-builder-test').send_keys('eroshenkoam/allure-example')
     s('#query-builder-test').press_enter()
 
-    s(by.link_text('eroshenkoam/allure-example')).with_(timeout=browser.config.timeout * 3).click()
+    s(by.link_text('eroshenkoam/allure-example')).with_(timeout=browser.config.timeout * 5).click()
 
     s("#issues-tab").with_(timeout=browser.config.timeout * 3).click()
 

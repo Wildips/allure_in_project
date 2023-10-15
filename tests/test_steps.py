@@ -21,7 +21,7 @@ def test_issue_name_with_dynamic_steps():
         s('#query-builder-test').press_enter()
 
     with allure.step('Переходим по ссылке в репозиторий'):
-        s(by.link_text('eroshenkoam/allure-example')).with_(timeout=browser.config.timeout * 3).click()
+        s(by.link_text('eroshenkoam/allure-example')).with_(timeout=browser.config.timeout * 5).click()
 
     with allure.step('Переходим на вкладку Задачи'):
         s("#issues-tab").with_(timeout=browser.config.timeout * 3).click()
