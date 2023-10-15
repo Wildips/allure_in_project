@@ -37,8 +37,8 @@ jobs:
         run: |
           pytest -s -vv --alluredir=allure-results
 
-      - uses: browser-actions/setup-chrome@v1
-      - run: chrome --version
+#      - uses: browser-actions/setup-chrome@v1
+#      - run: chrome --version
 
 
 #      - name: Run pytest
