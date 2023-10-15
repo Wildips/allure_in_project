@@ -29,19 +29,19 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      #      - name: Run tests
-      #        run: |
-      #          pytest -s -vv --alluredir=allure-results
+      - name: Run tests
+        run: |
+          pytest -s -vv --alluredir=allure-results
 
-      - name: Run pytest
-        uses: actions/pytest-action@v2
-        with:
-          verbose: true
-          emoji: true
-          job-summary: true
-          custom-arguments: '-q'
-          click-to-expand: true
-          report-title: 'Test Report'
+#      - name: Run pytest
+#        uses: pavelzw/pytest-action@v2
+#        with:
+#          verbose: true
+#          emoji: true
+#          job-summary: true
+#          custom-arguments: '-q'
+#          click-to-expand: true
+#          report-title: 'Test Report'
 
 
       - name: Get Allure history
@@ -49,23 +49,23 @@ jobs:
         if: always()
         continue-on-error: true
         with:
-          ref: allure_in_project
-          path: allure_in_project
+          ref: gh-pages
+          path: gh-pages
 
       - name: Test marketplace action
-        uses: actions/allure-report-action@master
+        uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
         with:
           allure_results: build/allure-results
-          gh_pages: allure_in_project
+          gh_pages: gh-pages
           allure_report: allure-report
           allure_history: allure-history
 
       - name: Deploy report to Github Pages
         if: always()
-        uses: actions/actions-allure_in_project@v2
+        uses: peaceiris/actions-gh-pages@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: allure_in_project
+          PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
