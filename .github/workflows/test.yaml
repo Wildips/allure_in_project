@@ -22,10 +22,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-#      - name: Download Chrome
-#        run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-#      - name: Install Chrome
-#        run: sudo dpkg -i google-chrome-stable_current_amd64.deb
+      - name: Download Chrome
+        run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      - name: Install Chrome
+        run: sudo dpkg -i google-chrome-stable_current_amd64.deb
 
       - name: Install dependencies
         run: pip install pytest pytest-md pytest-emoji
@@ -33,23 +33,23 @@ jobs:
       - name: Install requirements
         run: |
           pip install -r requirements.txt
-#      - name: Run tests
-#        run: |
-#          pytest -s -vv --alluredir=allure-results
+      - name: Run tests
+        run: |
+          pytest -s -vv --alluredir=allure-results
 
       - uses: browser-actions/setup-chrome@v1
       - run: chrome --version
 
 
-      - name: Run pytest
-        uses: pavelzw/pytest-action@v2
-        with:
-          verbose: true
-          emoji: true
-          job-summary: true
-          custom-arguments: '-q'
-          click-to-expand: true
-          report-title: 'Test Report'
+#      - name: Run pytest
+#        uses: pavelzw/pytest-action@v2
+#        with:
+#          verbose: true
+#          emoji: true
+#          job-summary: true
+#          custom-arguments: '-q'
+#          click-to-expand: true
+#          report-title: 'Test Report'
 
 
       - name: Get Allure history
