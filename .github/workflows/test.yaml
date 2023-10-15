@@ -42,7 +42,7 @@ jobs:
           path: allure_in_project
 
       - name: Allure Report action from marketplace
-        uses: simple-elf/allure-report-action@master
+        uses: actions/allure-report-action@master
         if: always()
         with:
           allure_results: allure-results
@@ -51,7 +51,7 @@ jobs:
 
       - name: Deploy report to Github Pages
         if: always()
-        uses: peaceiris/actions-allure_in_project@v2
+        uses: actions/actions-allure_in_project@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: allure_in_project
